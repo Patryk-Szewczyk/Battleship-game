@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="PL-pl" />
+        <title>battleships-game</title>
+        <link rel="stylesheet" href="battleships-game-beta.css" type="text/css" />
+    </head>
+    <body>
+
+        <div class="battleship-musicChoose">
+            <div class="battleship-musicChoose-button">
+                <div class="musicChoose-title"></div>
+                <div class="musicChoose-options">
+                    <div class="musicChoose-options-button button-yes">yes</div>
+                    <div class="musicChoose-options-button button-no">no</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="battleship-guide-1">
+            <div class="battleship-guide-info">
+                <div class="guide-title">Game guide</div>
+                <div class="guide-content">
+                    <div class="guide-content-instruction">
+                            <div class="instruction-content-ptBox">
+                                1. This game depend on destroying ships by shoting to them.
+                            </div>
+                            <div class="instruction-content-ptBox">
+                                2. Player have at one's disponal board in which located random drawed ships.
+                                Every ship is hidden and player have to trying find him by shooting to him.
+                            </div>
+                            <div class="instruction-content-ptBox">
+                                3. To shoot towards ship player have to choose correct ship coordination and click "FIRE" button.
+                            </div>
+                            <div class="instruction-content-ptBox">
+                                4. Ship coordination looks as follows: B7<br>
+                                If player write other value than value which includes big letter ahead and number at the back, 
+                                game return statement about uncorrected ship coordination.
+                            </div>
+                            <div class="instruction-content-ptBox">
+                                5. Game is finish once player destroyed all ships. Information about currently destroyed ships located on bottom game part.
+                            </div>
+                            <div class="instruction-content-ptBox">
+                                6. Player can repeat every game. In new game ships spring out in new places. 
+                            </div>
+                    </div>
+                </div>
+                <div class="guide-footer">
+                    <div class="guide-button">start</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="battleship-guide-2">
+            <div class="battleship-guide-info">
+                <div class="guide-title">Game guide</div>
+                <div class="guide-content">
+                    <div class="guide-content-shipTypes">
+                        <div class="shipTypes-title">Ship types</div>
+                        <div class="shipTypes-table-dim">
+                            <table class="table-shipGuide">
+                                <tr>
+                                    <th class="table-shipType col1">Ship</th>
+                                    <th class="table-shipLength col2">Length</th>
+                                    <th class="table-shipAmount col3">Amount</th>
+                                </tr>
+                                <tr>
+                                    <td class="btBor td-ship">
+                                        <div class="graphShip-L2"></div>
+                                    </td>
+                                    <td class="btBor">2</td>
+                                    <td class="btBor">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="btBor td-ship">
+                                        <div class="graphShip-L3"></div>
+                                    </td>
+                                    <td class="btBor">3</td>
+                                    <td class="btBor">3</td>
+                                </tr>
+                                <tr>
+                                    <td class="btBor td-ship">
+                                        <div class="graphShip-L4"></div>
+                                    </td>
+                                    <td class="btBor">4</td>
+                                    <td class="btBor">2</td>
+                                </tr>
+                                <tr>
+                                    <td class="table-left-BordRadius bottom-ThickBorder td-ship">
+                                        <div class="graphShip-L5"></div>
+                                    </td>
+                                    <td class="bottom-ThickBorder">5</td>
+                                    <td class="table-right-BordRadius bottom-ThickBorder">1</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="guide-content-shotResultTypes">
+                        <div class="shotResultTypes-title">Fired shot info</div>
+                        <div class="shotResultTypes-type">
+                            <div class="shotResultTypes-type-shape">
+                                <div class="sign-miss"></div>
+                            </div>
+                            <div class="shotResultTypes-type-info">- missed shot</div>
+                        </div>
+                        <div class="shotResultTypes-type">
+                            <div class="shotResultTypes-type-shape">
+                                <div class="sign-hit"></div>
+                            </div>
+                            <div class="shotResultTypes-type-info">- ship hitting by bullet</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-footer">
+                    <div class="guide-button">next</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="battleship-content">
+            <div class="invisible-program-box">
+                <input class="inputBut-style" type="button" value="Wylosuj statki"/>
+                <p>Zakres ilości statków: 10</p>
+                <p>Aktywny zakres długości statków: 2 - 5</p>
+                <p>Zakres kierunków położenia statków: toRight & toBottom</p>
+                <div id="resultArea"></div>
+            </div>
+            <div class="btsh-body">
+                <div class="btsh-shad-1">
+                    <div class="btsh-shad-2">
+                        <div class="btsh-header">battleships game<!--<sup>beta</sup>--></div>
+                        <div class="btsh-content">
+                            <div class="btsh-battleField">
+                                <div class="btsh-battleField-none"></div>
+                                <div class="btsh-battleField-horizontalNumGroup"></div>
+                                <div class="btsh-battleField-verticalNumGroup"></div>
+                                <div class="btsh-battleField-areaGroup"></div>
+                            </div>
+                        </div>
+                        <div class="btsh-footer">
+                            <div class="chooseCoordinate-box">
+                                <div class="btsh-footer-text">choose area</div>
+                                <input class="inputText-style" type="text"/>
+                                <input class="inputBut-style" type="button" value="FIRE" />
+                            </div>
+                            <div class="destroyedShipAm-box">
+                                <div class="btsh-footer-text">Destroyed ships</div>
+                                <div class="destroyedShips-area"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="finishGame-message-background">
+            <div class="battleship-musicChoose-button">
+                <div class="musicChoose-title">You destroyed all ships. Do you want play again?</div>
+                <div class="musicChoose-options">
+                    <div class="musicChoose-options-button button-yes">yes</div>
+                    <div class="musicChoose-options-button button-no">no</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="credits-body">
+            <div class="credits-content">
+                <div class="credits-header-1">
+                    Thank you very much for your playing in my game
+                </div>
+                <div class="credits-header-2">
+                    Game authors:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Orginal idea:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Updated idea:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Producer:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Production director:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Project coordination:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Programmers:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Frontend developer:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    HTML code:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    CSS code:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    JavaScript code:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Code correction:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Code bug fixes:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Code style:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Document Object Model (DOM):
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Game style:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Visual effects:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Game functionality:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Sounds insertion:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Game text:
+                </div>
+                <div class="credits-contentText-1">
+                    Patryk Szewczyk
+                </div>
+                <div class="credits-header-2">
+                    Music and sounds source:
+                </div>
+                <div class="credits-contentText-1">
+                    Pixabay
+                </div>
+            </div>
+        </div>
+        
+        <div class="last-page">
+            <div class="last-page-info">
+                <div class="last-page-info-box-1">
+                    Thank you very much for watching game credits to end.<br> 
+                    I'm hope that your time at playing in this game was pleasure and satisfaction.
+                    If you want more play, you may play in other and older as well as first my game, wchich named: "Quiz World".
+                </div>
+                <div class="last-page-info-box-2">
+                    Here is link to <a href="https://patryk-szewczyk.github.io/Quiz-World/quiz-skeleton.html">Quiz World</a>.
+                </div>
+            </div>
+        </div>
+
+        <audio src="sounds/bg-music-1.mp3"></audio>
+        <audio src="sounds/human-shouts.mp3"></audio>
+        <audio src="sounds/shot-3.mp3"></audio>
+        <audio src="sounds/shot-3R.mp3"></audio>
+        <audio src="sounds/escape-151399.mp3"></audio>
+        
+        <script src="battleships-game-beta.js"></script>
+    </body>
+</html>
